@@ -16,31 +16,25 @@ public class Solution {
             }
         }
         scan.close();
-        recurseFunc(input, nrow, ncolumn);
+        recurseFunc(input);
     }
     
-    public static void recurseFunc(int[][] matrix, int nrow, int ncolumn){
+    public static void recurseFunc(int[][] matrix){
         ArrayList<Integer> npath = new ArrayList<Integer>();
         List<Integer> res = findPath(matrix, 0, 0, npath);
-        System.out.println(res.size());
+        double result = res.size() % (Math.pow(10, 9)+7);
+        System.out.println(Math.round(result));
     }
     
     public static List<Integer> findPath(int[][] matrix, int r, int c, List<Integer> npath){
         int i=0;
-        if (c+1 < matrix[0].length)
+        if (c+1 < matrix[0].length && matrix[r][c+1] == 1)
         {
-            if(matrix[r][c+1] == 1)
-            {
-                findPath(matrix, r, c+1, npath);
-                
-            }
+            findPath(matrix, r, c+1, npath);
         }
-        if (r+1 < matrix.length)
+        if (r+1 < matrix.length && matrix[r+1][c]==1)
         {
-        if(matrix[r+1][c]==1)
-            {
-                findPath(matrix, r+1, c, npath);
-            }
+           findPath(matrix, r+1, c, npath);
         }
         if( r == matrix.length-1 && c == matrix[0].length-1)
         {
