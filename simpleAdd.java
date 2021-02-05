@@ -6,7 +6,7 @@ import java.math.*;
 import java.util.regex.*;
 
 class Solution {
-    public static void main(String[] args) throws NumberFormatException{
+    public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int res = 0;
         int i = scan.nextInt();
